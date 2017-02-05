@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: chat
+  password: SuperSecurePassword
+  host: /run/docker_sockets
+
+development:
+  <<: *default
+  database: chat
+
+test:
+  <<: *default
+  database: chat_test
+
+production:
+  <<: *default
+  database: chat
