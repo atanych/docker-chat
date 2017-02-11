@@ -1,14 +1,14 @@
 class GameChannel < ApplicationCable::Channel
   def subscribed
     stream_from 'chat'
-    ActionCable.server.broadcast('chat', message: '*** new user ***')
+    BroadcastWorker.perform_async('*** new user ***')
   end
 
   def unsubscribed
-    ActionCable.server.broadcast('chat', message: '*** user has left chat ***')
+    BroadcastWorker.perform_async('*** user has left chat ***')
   end
 
   def send_message(data)
-    ActionCable.server.broadcast('chat', data)
+    BroadcastWorker.perform_async(data['message'])
   end
 end
