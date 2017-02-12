@@ -35,11 +35,6 @@ gem 'redis', '~> 3.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platform: :mri
-end
-
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
   gem 'web-console', '>= 3.3.0'
@@ -58,5 +53,14 @@ gem 'bootstrap', '~> 4.0.0.alpha3'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails', '~> 3.5'
   gem 'pry-byebug'
+end
+group :test do
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'capybara', '~> 2.11.0'
+  gem 'poltergeist'
+  # gem 'capybara-webkit'
+  gem 'capybara-screenshot'
+  gem 'selenium-webdriver'
 end
