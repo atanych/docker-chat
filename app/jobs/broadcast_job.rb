@@ -1,5 +1,5 @@
-class BroadcastWorker
-  include Sidekiq::Worker
+class BroadcastJob < ApplicationJob
+  queue_as :default
 
   def perform(message)
     ActionCable.server.broadcast('chat', message: message)
